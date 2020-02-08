@@ -739,7 +739,6 @@ module.exports = function( THREE ) {
 
 			if ( scope.enabled === false || scope.enableZoom === false || ( state !== STATE.NONE && state !== STATE.ROTATE ) ) return;
 
-			event.preventDefault();
 			event.stopPropagation();
 
 			handleMouseWheel( event );
@@ -874,7 +873,7 @@ module.exports = function( THREE ) {
 		scope.domElement.addEventListener( 'contextmenu', onContextMenu, false );
 
 		scope.domElement.addEventListener( 'mousedown', onMouseDown, false );
-		scope.domElement.addEventListener( 'wheel', onMouseWheel, false );
+		scope.domElement.addEventListener( 'wheel', onMouseWheel, { passive: true } );
 
 		scope.domElement.addEventListener( 'touchstart', onTouchStart, false );
 		scope.domElement.addEventListener( 'touchend', onTouchEnd, false );
